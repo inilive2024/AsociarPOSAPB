@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de texto</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        input {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Asociador de POS APB</h1>
+
+    <label for="posSN">POS S/N:</label>
+    <input type="text" id="posSN" placeholder="Ingrese valor para POS S/N">
+
+    <br>
+
+    <label for="storeID">Store ID:</label>
+    <input type="text" id="storeID" placeholder="Ingrese valor para Store ID">
+
+    <br>
+
+    <button onclick="generarTexto()">Generar</button>
+
+    <h2>Esto es lo que tenés que poner en SLACK:</h2>
+    <p id="resultado"></p>
+
+    <script>
+        function generarTexto() {
+            // Obtener los valores de los campos
+            var valorA = document.getElementById('posSN').value;
+            var valorB = document.getElementById('storeID').value;
+
+            // Generar el texto con los valores
+            var textoGenerado = `@inibot create:${valorA}\n@inibot associate:${valorA},${valorB}`;
+
+            // Mostrar el resultado en la página
+            document.getElementById('resultado').innerText = textoGenerado;
+        }
+    </script>
+</body>
+</html>
